@@ -1,0 +1,48 @@
+---
+title: 'Exercise 1: Motivating reproducibility'
+output:
+  html_document:
+    fig_height: 3
+    fig_width: 6
+---
+
+This RMarkdown file contains R code you can use to complete the exercise from earlier. To see the output simply click on **Knit HTML** above. This might prompt you to install and load some required packages, specifically `knitr`. Just click yes, and the a document including this narrative, the R code, and figures should pop up.
+
+## Packages:
+
+We will use the `ggplot2` package to make the plots for these exercises. This is not the only way to make this plot, but the `ggplot2` package has some aesthetic defaults that makes it attractive. 
+
+Load this package:
+
+```{r}
+library(ggplot2)
+```
+
+If you'd like to learn more about `ggplot2`, we recommend visiting http://ggplot2.org/, which includes links to documentation about the functions in this package as well as external resources.
+
+## Data: 
+
+The `read.csv` function is used to read the data into R. Note that the argument provided for this function is the complete path that leads to the dataset from your current working directory (where this RMarkdown file is located). Also note that this is provided as a character string, hence in quotation marks.
+
+```{r}
+gap_5060 = read.csv("data/gapminder-5060.csv")
+```
+
+## Task: 
+
+**Visualize the relationship between GDP and life expectancy for countries in Europe in 1952 using a scatter plot.**
+
+First, create a subset of `gap_5060` for Europe in 1952:
+```{r}
+eu_52 = subset(gap_5060, continent == "Europe" & gap_5060$year == 1952)
+```
+
+Then, create the plot:
+```{r}
+ggplot(data = eu_52, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()                                          # add points
+```
+
+## Extending the analysis:
+
+Insert the necessary code for extending the analysis below, with any additional comments you like.
