@@ -43,6 +43,13 @@ ggplot(data = eu_52, aes(x = gdpPercap, y = lifeExp)) +
   geom_point()                                          # add points
 ```
 
-## Extending the analysis:
+## A brief extension:
+
+**Task:** Add year 1967 in another color.
 
 Insert the necessary code for extending the analysis below, with any additional comments you like.
+
+```{r}
+
+```
+

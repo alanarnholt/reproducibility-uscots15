@@ -97,7 +97,7 @@ Exercise 1: Motivating reproducibility
 type: sub-section
 
 
-Exercise 1: Instructions
+Instructions
 ========================================================
 
 **This slide needs to be shorter or split into two for everything to fit.**
@@ -106,7 +106,7 @@ Exercise 1: Instructions
 
 * Load `data/gapminder-5060.csv` into your statistical analysis package of choice, and complete the following exercise. While doing so make sure to write instructions/documentation for your collaborator to reproduce your work starting with the original dataset.
 
-* Visualize the relationship between GDP and life expectancy for countries in Europe in 1952.
+* **Task:** Visualize the relationship between GDP and life expectancy for countries in Europe in 1952.
 
 * Put a pink sticky on your laptop if you need help, and a green sticky if you're done with this part.
 
@@ -117,7 +117,7 @@ Exercise 1: Instructions
 * Then, talk to each other about challenges you faced (or didn't face) or why you were or weren't able to reproduce their work.
 
 
-Exercise 1: Wrap up
+Take aways
 ========================================================
 
 Fill out the form at http://goo.gl/forms/puRtG6klBE.
@@ -253,3 +253,62 @@ ggplot(data = eu_5267, aes(x = gdpPercap, y = lifeExp, colour = as.factor(year))
 Exercise 2: Extending your analysis
 ========================================================
 type: sub-section
+
+
+Resources
+========================================================
+
+* Open `ex2-template.Rmd`
+
+
+Instructions
+========================================================
+
+It's your lucky day, you just got some additional data.
+
+**Tasks:**
+
+1. Append the new data `gapminder-7080.csv` and `gapminder-90plus.csv` to your existing data set. (Be careful as you do so, as the ordering of columns in the data set may not match between the different CSV files!)
+
+2. Create line plots of life expectancy over time for Canada, Mexico, and the United States that run from 1952 to 2007.
+
+Demo
+========================================================
+
+[Walkthrough of the `ex2-template.Rmd` document and output]
+
+
+Further extensions
+========================================================
+
+Create the same plot as before, but now also include data from Cambodia, China, Japan, Egypt, South Africa, Uganda.
+
+
+
+Take aways
+========================================================
+
+* The analysis is self-documenting
+
+* It's easy to extend or refine analyses by copying and modifying code blocks
+
+* The results of the analysis can be disseminated by sending Markdown and providing data sources, or just simply providing the generated HTML of just a summary of the analysis is needed
+
+
+
+Extending the scope
+========================================================
+type: sub-section
+
+* discuss projects with multiple files, file organization, etc.
+* discuss collaboration with others
+
+
+
+Reproducibility in the classroom
+========================================================
+type: sub-section
+
+* in the intro class single markdown file
+* in higher level classes can get into tools like GitHub etc., RStudio integration makes it easy
+
