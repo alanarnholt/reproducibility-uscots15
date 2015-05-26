@@ -1,0 +1,3 @@
+Slides and materials for the "Connecting data, analysis, and results using a reproducible framework" session at USCOTS 2015.
+
+Some of the materials are result of the NSF supported [Reproducible Science Curriculum Hackathon](https://github.com/Reproducible-Science-Curriculum/Reproducible-Science-Hackathon-Dec-08-2014) that was held December 8-11, 2014, at the National Evolutionary Synthesis Center ([NESCent](http://nescent.org/)) in Durham, NC.
