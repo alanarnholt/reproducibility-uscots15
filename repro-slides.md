@@ -230,21 +230,20 @@ Demo
 A brief extension
 ========================================================
 
-```{r echo=FALSE}
-gap_5060 = read.csv("data/gapminder-5060.csv")
-library(ggplot2)
-```
+
 
 **Task:** Add year 1967 in another color.
 
 * Create a subset of `gap_5060` for Europe in 1952 and 1967:
-```{r eval=FALSE}
+
+```r
 years = c(1952, 1967)
 eu_5267 = subset(gap_5060, continent == "Europe" & (year %in% years))
 ```
 
 * Create the plot:
-```{r eval=FALSE}
+
+```r
 ggplot(data = eu_5267, aes(x = gdpPercap, y = lifeExp, colour = as.factor(year))) +
   geom_point()
 ```
