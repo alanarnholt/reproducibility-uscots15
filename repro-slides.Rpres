@@ -31,6 +31,8 @@ Materials
 
 * All source code at **insert github link**
 
+* [RMarkdown cheat sheet](http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) **Note: Would it be useful to print these out as well?**
+
 
 Acknowledgements
 ========================================================
