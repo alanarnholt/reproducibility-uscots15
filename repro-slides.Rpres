@@ -1,0 +1,73 @@
+Connecting data, analysis, and results using a reproducible framework
+========================================================
+font-family: 'Helvetica'
+date: May 30, 2015
+width: 1440
+
+
+Abstract
+========================================================
+
+The issue of reproducibility often comes up in the context of published research and the need to accompany such research with the complete data and analyses, including software/code. However, as statistics educators who teach data analysis, we should be instilling best practices in students before they set out to do research. The tools and techniques presented in the session will enable training of new researchers/practitioners with a scientifically sound and fully reproducible data analysis workflow. While the tool we will feature most prominently is R/RStudio/RMarkdown, we will also open the floor for discussion of other tools participants find valuable for making connections with client disciplines, practicing statisticians, and other professionals who use statistical ideas and methods and ideas for building a reproducible workflows for these tools. The session will feature with team-based activities that highlight the importance of doing data analysis in a reproducible framework. We will also demonstrate the use of tools like R/RStudio/RMarkdown for teaching reproducible data analysis, even at the introductory statistics level, as well as higher-level tools such as GitHub.
+
+Acknowledgements
+========================================================
+
+Some of the materials are result of the NSF supported [Reproducible Science Curriculum Hackathon](https://github.com/Reproducible-Science-Curriculum/Reproducible-Science-Hackathon-Dec-08-2014) that was held December 8-11, 2014, at the National Evolutionary Synthesis Center ([NESCent](http://nescent.org/)) in Durham, NC.
+
+Why should we care?
+========================================================
+
+Examples of irreproducible research has caused significant issues
+
+
+Seizure study retracted after authors realize data got "terribly mixed"
+========================================================
+
+From the authors of **Low Dose Lidocaine for Refractory Seizures in Preterm Neonates**:
+
+*"The article has been retracted at the request of the authors. After carefully re-examining the data presented in the article, they identified that data of two different hospitals got terribly mixed. The published results cannot be reproduced in accordance with scientific and clinical correctness."*
+
+Source: http://retractionwatch.com/2013/02/01/seizure-study-retracted-after-authors-realize-data-got-terribly-mixed/
+
+Bad spreadsheet merge kills depression paper, quick fix resurrects it
+========================================================
+
+* The authors of a paper showing a link between immune response and depression requested a retraction after they realized they'd merged two spreadsheets with mismatching ID codes.
+
+* Original conclusion: Lower levels of CSF IL-6 were associated with current depression and with future depression [...].
+
+* Revised conclusion: Higher levels of CSF IL-6 and IL-8 were associated with current depression [...].
+
+Source: http://retractionwatch.com/2014/07/01/bad-spreadsheet-merge-kills-depression-paper-quick-fix-resurrects-it/
+
+Exercise 1: Motivating reproducibility
+========================================================
+
+**Part 1:** *Analyze + document*
+
+* Load `data/gapminder-5060.csv` into your statistical analysis package of choice, and complete the following exercise. While doing so make sure to write instructions/documentation for your collaborator to reproduce your work starting with the original dataset.
+
+* Visualize the relationship between GDP and life expectancy for countries in Europe in 1952.
+
+* Put a pink sticky on your laptop if you need help, and a green sticky if you're done with this part.
+
+**Part 2:** *Swap + discuss*
+
+* Swap instructions/documentation with your collaborator, and reproduce their work without  additional instructions. If your collaborator doesn't have the software needed to reproduce your work, help them install it or walk them through it on your computer to emulate the experience.
+
+* Then, talk to each other about challenges you faced (or didn't face) or why you were or weren't able to reproduce their work.
+
+Exercise 1: Wrap up
+========================================================
+
+Fill out the form at http://goo.gl/forms/puRtG6klBE.
+
+**Note to Nick: will replace with a easily readable bit.ly link. Let me know if you can think of other software to list on the form.**
+
+* Have you ever tried to reproduce someone else's data analysis before?
+* Have you ever tried to reproduce your own work before?
+* What made it easy/hard for reproducing your parners' work?
+* What would have to happen if you had to extend the analysis further?
+* If you caught a data error how easy/hard would it be to re-create the analysis?
+* What would happen if your collaborator is no longer available to walk you through their analysis?
