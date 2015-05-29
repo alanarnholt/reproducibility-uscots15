@@ -10,9 +10,9 @@ output:
 
 ## Materials
 
->- Slides at http://bit.ly/reproduce_uscots15_slides
->- All source code at http://bit.ly/reproduce_uscots15_git
->- *Very* useful resources from RStudio:
+* Slides at http://bit.ly/reproduce_uscots15_slides
+* All source code at http://bit.ly/reproduce_uscots15_git
+* *Very* useful resources from RStudio:
     * [RMarkdown cheat sheet](http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
     * Others at http://www.rstudio.com/resources/cheatsheets
         * ggplot2: for visualization
