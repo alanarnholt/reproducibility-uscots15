@@ -4,52 +4,89 @@ output:
   html_document:
     fig_height: 3
     fig_width: 6
+    highlight: pygments
 ---
 
 This RMarkdown file contains R code you can use to complete the exercise from earlier. To see the output simply click on **Knit HTML** above. This might prompt you to install and load some required packages, specifically `knitr`. Just click yes, and the a document including this narrative, the R code, and figures should pop up.
 
+
 ## Packages:
 
-We will use the `ggplot2` package to make the plots for these exercises. This is not the only way to make this plot, but the `ggplot2` package has some aesthetic defaults that makes it attractive. 
+We will use the `ggplot2` package to make the plots for these exercises. This is not the only way to make this plot, but the `ggplot2` package has some aesthetic defaults that makes it attractive. Load this package:
 
-Load this package:
-
-```{r}
+```{r message=FALSE}
 library(ggplot2)
 ```
 
 If you'd like to learn more about `ggplot2`, we recommend visiting http://ggplot2.org/, which includes links to documentation about the functions in this package as well as external resources.
 
+We will also use the `dplyr` package for data wrangling, let's load that as well:
+
+```{r message=FALSE}
+library(dplyr)
+```
+
+Lastly, we will use the `downloader` package for downloading files from a secure URL (https) with a simple commands.
+
+```{r message=FALSE}
+library(downloader)
+```
+
+
 ## Data: 
 
-The `read.csv` function is used to read the data into R. Note that the argument provided for this function is the complete path that leads to the dataset from your current working directory (where this RMarkdown file is located). Also note that this is provided as a character string, hence in quotation marks.
-
+First, we download the dataset `gapminder-5060.csv` off the web:
 ```{r}
-gap_5060 = read.csv("data/gapminder-5060.csv")
+download(url = "https://raw.githubusercontent.com/mine-cetinkaya-rundel/reproducibility-uscots15/master/data/gapminder-5060.csv", destfile = "gapminder-5060.csv")
 ```
 
-## Task: 
+The `read.csv` function is used for loading the data. Also note that the name of the file is provided as a character string, hence in quotation marks.
 
-**Visualize the relationship between GDP and life expectancy for countries in Europe in 1952 using a scatter plot.**
-
-First, create a subset of `gap_5060` for Europe in 1952:
 ```{r}
-eu_52 = subset(gap_5060, continent == "Europe" & gap_5060$year == 1952)
+gap_5060 = read.csv("gapminder-5060.csv")
 ```
 
-Then, create the plot:
+
+## Exercise 1: 
+
+**Task: Visualize the relationship between GDP and life expectancy for countries in Europe in 1952 using a scatter plot.**
+
+First, create a subset of `gap_5060` for Europe in 1952 by `filter`ing for rows where `continent == "Europe"` and `year == 1952`, and save the resulting subset as a new data frame called `eu52`:
+
+```{r}
+eu_52 <- gap_5060 %>%
+  filter(continent == "Europe", year == 1952)
+```
+
+Then, create the scatter plot:
 ```{r}
 ggplot(data = eu_52, aes(x = gdpPercap, y = lifeExp)) +
-  geom_point()                                          # add points
+  geom_point()                                          
 ```
+
+For more on creating scatterplots using the `ggplot2` package, see [here](http://docs.ggplot2.org/current/geom_point.html).
+
 
 ## A brief extension:
 
-**Task:** Add year 1967 in another color.
+**Task: Add year 1967 in another color.**
 
-Insert the necessary code for extending the analysis below, with any additional comments you like.
+1. Create a subset of `gap_5060` for Europe in 1952 **and 1967** and call it `eu_5267`. Some hints to get you started:
+
+    * Copy and paste the code from above where you created a subset for the year 1952 only.
+    * Update of the logical argument specifying `year == 1952` to instead specify 1952 or 1967: `year %in% c(1952, 1967)`.
+    * Update the name of the resulting data frame to `eu_5267`
 
 ```{r}
 
+```
+
+2. Create the plot. Some more hints:
+    * Copy and paste the code that was used for plotting from above.
+    * Update the name of the data frame being referred to in the `ggplot` function.
+    * Add another aesthetic to the plot for plotting data from th two years in difference colors: `color = factor(year)`. Note that this says the color of the points should be determined by the year, and that we should consider year as a categorical (factor) variable (either 1952 or 1967).
+
+```{r}
+                                        
 ```
 

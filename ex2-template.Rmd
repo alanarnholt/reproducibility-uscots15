@@ -4,40 +4,50 @@ output:
   html_document:
     fig_height: 3
     fig_width: 6
+    highlight: pygments
 ---
 
-Append the new data `gapminder-7080.csv` and and `gapminder-90plus.csv` to your existing data set.
+```{r message=FALSE}
+library(ggplot2)
+library(dplyr)
+library(downloader)
+```
 
-## Reading files
+## Data: 
 
-Reading in the data is quick and easy with the `read.csv` function.  
+Download the necessary files:
+
 ```{r}
-gap_5060 <- read.csv('data/gapminder-5060.csv')
-gap_7080 <- read.csv('data/gapminder-7080.csv')
-gap_90plus <- read.csv('data/gapminder-90plus.csv')
+download(url = "https://raw.githubusercontent.com/mine-cetinkaya-rundel/reproducibility-uscots15/master/data/gapminder-5060.csv", destfile = "gapminder-5060.csv")
+
+download(url = "https://raw.githubusercontent.com/mine-cetinkaya-rundel/reproducibility-uscots15/master/data/gapminder-7080.csv", destfile = "gapminder-7080.csv")
+
+download(url = "https://raw.githubusercontent.com/mine-cetinkaya-rundel/reproducibility-uscots15/master/data/gapminder-90plus.csv", destfile = "gapminder-90plus.csv")
+```
+
+and load them using the `read.csv` function:
+
+```{r}
+gap_5060 = read.csv("gapminder-5060.csv")
+gap_7080 = read.csv("gapminder-7080.csv")
+gap_90plus = read.csv("gapminder-90plus.csv")
 ```
 
 There are a number of similarly named functions for reading files, such as  `read.delim` (tab-delimited files) and `read.table` (allows you to specify the separator), and there are similar solutions for Excel spreadsheets and various other formats.
 
-## Combining data frames
+## Exercise 2
+
+**Task: Append the new data `gapminder-7080.csv` and `gapminder-90plus.csv` to your existing data set.**
 
 The functions `rbind` and `cbind` can be used to combine data frames. `rbind` combines rows (such as when adding now observations to a data set), `cbind` combines by columns (useful when adding new variables to a data set).  
 
 In the current context, we want to add new rows to our data set so we'll use `rbind`. One of the really convenient things about using `rbind` rather than trying to combine the spreadsheets in a program like Excel is that `rbind` matches columns by their names rather than locations, so a simple reordering of columns in one data frame versus another is very simply dealt with.
 
-
 ```{r}
 gap_combined <- rbind(gap_5060, gap_7080, gap_90plus)
 ```
 
-# Task 2
-
-Create line plots of life expectancy over time for Canada, Mexico, and the United States that run from 1952 to 2007.
-
-We're going to using the `ggplot2` library to facilitate efficient figure creation, so let's load the library.
-```{r}
-library(ggplot2)
-```
+**Task: Create line plots of life expectancy over time for Canada, Mexico, and the United States that run from 1952 to 2007.**
 
 Since we're only interested in data from the US, Canada, and Mexico for the years 1950 through 2007, we first create a list containing names of these countries.
 
@@ -46,22 +56,26 @@ country_list <- c('Canada', 'Mexico', 'United States')
 ```
 
 Then, we subset the combined dataset for these countries.
+
 ```{r}
-gap_north_america <- subset(gap_combined, country %in% country_list)
+gap_north_america <- gap_combined %>%
+  filter(country %in% country_list)
 ```
 
 Finally, we use the `geom_line()` "geom" from ggplot. "Geom" is short for "geometric object" -- basically something that controls how a plot is drawn. So `geom_line()` draws our data as line plots.
 
 ```{r}
-ggplot(gap_north_america, aes(x = year, y = lifeExp, color=country)) + 
+ggplot(gap_north_america, aes(x = year, y = lifeExp, color = country)) + 
   geom_line() + 
   xlab("Year") + 
   ylab("Life Expectancy (years)")
 ```
 
-### Extending life expectancy plots to include more countries
+## Further extension:
 
-Insert the code for creating the same plot as before, but now also including data from Cambodia, China, Japan, Egypt, South Africa, Uganda. 
+**Task: Create the same plot as before, but now also include data from Cambodia, China, Japan, Egypt, South Africa, Uganda.**
 
-Remember that your code must go into a code chunk. You can insert a code chunk by typing the required characters or clicking on Chunks and then Insert Chunk above.
+Insert the code for creating the same plot as before, but now also including data from Cambodia, China, Japan, Egypt, South Africa, Uganda. Don't forget to save this as a new data frame. Then create the same plot as before. 
+
+Remember that your code must go into a code chunk. You can insert a code chunk by typing the required characters or clicking on *Chunks* and then *Insert Chunk* above.
 
