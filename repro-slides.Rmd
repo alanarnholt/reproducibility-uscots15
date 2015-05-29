@@ -256,11 +256,12 @@ We need an environment where
 
 * **Option 2: I already use R/RStudio:** Do you have the **latest** versions of R and RStudio installed locally on your computer?
     * No, or you're not sure $\rightarrow$ Go to Option 1
-    * Yes $\rightarrow$ Install and load `knitr`, `ggplot2`, and `downloader` packages
+    * Yes $\rightarrow$ Install and load `knitr`, `ggplot2`, `dplyr`, and `downloader` packages
 ```{r eval = FALSE}
 install.packages("knitr") ; library("knitr")
 install.packages("ggplot2") ; library("ggplot2")
 install.packages("downloader") ; library("downloader")
+install.packages("dplyr") ; library("dplyr")
 ```   
 ## Template
 

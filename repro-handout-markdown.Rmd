@@ -45,6 +45,7 @@ pass <- rstudio_login[i,2]
 install.packages("knitr") ; library("knitr")
 install.packages("ggplot2") ; library("ggplot2")
 install.packages("downloader") ; library("downloader")
+install.packages("dplyr") ; library("dplyr")
 ```   
     * Download RMarkdown template using
 
