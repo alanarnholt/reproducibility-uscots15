@@ -122,9 +122,8 @@ Download the dataset `gapminder-5060.csv` at http://bit.ly/reproduce_uscots15_ga
 
 ## Take aways
 
-Fill out the form at http://bit.ly/reproduce_uscots15_survey.
-
-<br><br>
+* What tool(s) did you use?
+* Were you able to reproduce?
 
 * Have you ever tried to reproduce someone else's data analysis before?
 * Have you ever tried to reproduce your own work before?
