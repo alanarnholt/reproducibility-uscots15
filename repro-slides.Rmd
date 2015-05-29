@@ -1,13 +1,46 @@
 ---
 title: "Connecting data, analysis, and results using a reproducible framework"
 author: "Mine Çetinkaya-Rundel and Nicholas Horton"
-date: "May 30, 2015"
+date: "May 29, 2015"
 output:
   ioslides_presentation:
+    highlight: pygments
     widescreen: yes
 ---
 
-# Reproduciblity: who cares?
+## Materials
+
+>- Slides at http://bit.ly/reproduce_uscots15_slides
+>- All source code at http://bit.ly/reproduce_uscots15_git
+>- *Very* useful resources from RStudio:
+    * [RMarkdown cheat sheet](http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+    * Others at http://www.rstudio.com/resources/cheatsheets
+        * ggplot2: for visualization
+        * dplyr: for data manipulation
+        * ...
+
+
+## Acknowledgements
+
+Some of the materials are result of the NSF supported [Reproducible Science Curriculum Hackathon](https://github.com/Reproducible-Science-Curriculum/Reproducible-Science-Hackathon-Dec-08-2014) that was held December 8-11, 2014, at the National Evolutionary Synthesis Center ([NESCent](http://nescent.org/)) in Durham, NC.
+
+Look for a workshop coming soon near you!
+
+
+        
+# Reproducibility: who cares?
+
+## Science retracts gay marriage paper without agreement of lead author LaCour
+
+* Yesterday (!) Science retracted a study of how canvassers can sway people's opinions about gay marriage published just 5 months ago.
+
+* Science Editor-in-Chief Marcia McNutt: Original survey data not made available for independent reproduction of results. + Survey incentives misrepresented. + Sponsorship statement false.
+
+* Two Berkeley grad students who attempted to replicate the study quickly discovered that the data must have been faked.
+
+* Methods we'll discuss today can't prevent this, but they can make it easier to discover issues.
+
+Source: http://news.sciencemag.org/policy/2015/05/science-retracts-gay-marriage-paper-without-lead-author-s-consent
 
 
 ## Seizure study retracted after authors realize data got "terribly mixed"
@@ -29,18 +62,9 @@ Source: http://retractionwatch.com/2013/02/01/seizure-study-retracted-after-auth
 
 Source: http://retractionwatch.com/2014/07/01/bad-spreadsheet-merge-kills-depression-paper-quick-fix-resurrects-it/
 
-## Author retracts study of changing minds on same-sex marriage after colleague admits data were faked
-
-* One of the authors of a recent study that claimed that short conversations with gay people could change minds on same-sex marriage has retracted it.
-
-* Researchers wanting to replicate the study failed to find such impressive results in their survey, and the study was retracted due to data having been faked.
-
-* Methods we will be discussing today won't prevent against data being faked, but they will make it easier and quicker to spot when such fraud is happening.
-
-Source: http://retractionwatch.com/2015/05/20/author-retracts-study-of-changing-minds-on-same-sex-marriage-after-colleague-admits-data-were-faked/
 
 
-# Promoting reproducibility
+# Reproducibility: why should we care?
 
 ## Two-pronged approach
 
@@ -57,46 +81,42 @@ Train new researchers who don’t have any other workflow
 
 </div>
 
+
+## Changing landscape of stat ed
+
+>- Last night we heard "more analysis of real and complex data + more research"
+>- More is good, but **better** is, well, better
+>- How about "**better** analysis of real and complex data + **better** research"?
+
+
 # Outline
 
 * Exercise 1: Motivating reproducibility
-* Literate programming and tools for reproducible data analysis
+* Literate programming
 * Revisit Exercise 1: Doing better
 * Exercise 2: Extending your analysis
-* Reproducibility in the statistics course
-* Next steps
+* Next steps... for you
+* Next steps... for your teaching
 
-
-## Acknowledgements
-
-Some of the materials are result of the NSF supported [Reproducible Science Curriculum Hackathon](https://github.com/Reproducible-Science-Curriculum/Reproducible-Science-Hackathon-Dec-08-2014) that was held December 8-11, 2014, at the National Evolutionary Synthesis Center ([NESCent](http://nescent.org/)) in Durham, NC.
-
-
-## Materials
-
-* Slides at http://bit.ly/reproduce_uscots15_slides
-
-* All materials you will need for the exercises in this workshop at **insert bitly link to zipped folder with markdown file and `data` folder with the data files** (please dowload)
-
-* All source code at http://bit.ly/reproduce_uscots15_git
-
-* [RMarkdown cheat sheet](http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
 
 
 # Exercise 1: Motivating reproducibility
+
+## Data
+
+Download the dataset `gapminder-5060.csv` at http://bit.ly/reproduce_uscots15_gap5060.
+
 
 ## Instructions
 
 **Part 1:** *Analyze + document*
 
-* Load `data/gapminder-5060.csv` into your statistical analysis package of choice, and complete the following exercise. Write instructions/documentation for your collaborator to reproduce your.
-
+* Load `gapminder-5060.csv` into your statistical analysis package of choice, and complete the following exercise. Write instructions/documentation for your collaborator to reproduce your.
 * **Task:** Visualize the relationship between GDP and life expectancy for countries in Europe in 1952.
 
 **Part 2:** *Swap + discuss*
 
 * Swap instructions/documentation with your collaborator, and reproduce their work without any additional instructions. Software mismatch: help them install the necessary software, or walk them through it on your computer to emulate the experience.
-
 * Then, discuss challenges you faced (or didn't face) and why you were or weren't able to reproduce their work.
 
 
@@ -113,22 +133,50 @@ Fill out the form at http://bit.ly/reproduce_uscots15_survey.
 * If you caught a data error how easy/hard would it be to re-create the analysis?
 * What would happen if your collaborator is no longer available to walk you through their analysis?
 
+## PSA
+
+<br><br><br>
+
+<center>
+*"You mostly collaborate with yourself,*
+<br>
+*and me-from-2-months-ago never responds to email."*
+<br><br>
+Mark Holder
+<center>
+
+
 
 # Literate programming
 
-## Donald Knuth. "Literate Programming (1984)" 
+## Donald Knuth "Literate Programming (1983)"
 
-*in Literate Programming. CSLI, 1992, pg. 99.*
+"Let us change our traditional attitude to the construction of programs: Instead of imagining that our main task is to instruct a *computer* what to do, let us concentrate rather on explaining to *human beings* what we want a computer to do."
 
-"Let us change our traditional attitude to the construction of programs: Instead of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to human beings what we want a computer to do."
+"The practitioner of literate programming [...] strives for a program that is comprehensible because its concepts have been introduced in an order that is best for human understanding, using a mixture of formal and informal methods that reinforce each other."
 
-"The practitioner of literate programming can be regarded as an essayist, whose main concern is with exposition and excellence of style. Such an author, with thesaurus in hand, chooses the names of variables carefully and explains what each variable means. He or she strives for a program that is comprehensible because its concepts have been introduced in an order that is best for human understanding, using a mixture of formal and informal methods that reinforce each other."
+>- These ideas have been around for years!
+>- and tools for putting them to practice have also been around
+>- but they have never been as accessible as the current tools
 
-Many years but tools haven't been around
+
+## Reproducibility checklist (abridged)
+
+* Are the tables and figures reproducible from the code and data?
+* Does the code actually do what you think it does?
+* In addition to what was done, is it clear *why* it was done? (e.g., how were parameter settings chosen?)
+* Can the code be used for other data?
+* Can you extend the code to do other things?
+
+<br><br><br><br>
+(From Karl Broman)
+
 
 ## Ambitious goal + (most likely) novice students
 
 We need an environment where
+
+* data, analysis, and results are tightly connected, or better yet, inseparable
 
 * reproducibility is built in
     * the original data remains untouched
@@ -136,15 +184,13 @@ We need an environment where
 
 * documentation is human readable and syntax is minimal
 
+
 ## Toolkit
 
-<div class="columns-2">
-![R](img/Rlogo-1.png)
+<center>
+![toolkit](img/toolkit.png)
+</center>
 
-![RStudio](img/RStudio-Logo-Blue-Gradient.png)
-</div>
-
-all in one, as lightweight as possible
 
 ## Why R?
 
@@ -158,19 +204,17 @@ all in one, as lightweight as possible
 ![RSplash](img/RSplash.png)
 </div>
 
+
 ## Why not language X?
 
 * There are a number of other great programming tools out there that can also be used to improve the reproducibility of your analysis
-
 * The key is to use some type of language that will allow you to automate and document your analysis
-
 * Once you master one language you'll probably find it easier to learn another
 
 
 ## Why RStudio?
 
 * RStudio $\ne$ R, it's instead an integrated development environment (IDE) for R
-
 * Gives you a single environment to combine your documentation and your analysis with markdown support
 * Runs on top of R
 * Gives you a bunch of really cool features, some of which we'll explore throughout the workshop
@@ -188,43 +232,39 @@ all in one, as lightweight as possible
 * Left: Console
     * Every time you launch RStudio, it will have the same text at the top of the console telling you the version of R that you’re running. 
     * Below that information is the prompt. 
-    
 * Upper right: workspace and a history of the commands that you've previously entered
-
 * Lower right: Any plots that you generate + access to files, help, packages
 
-## Tying back to literate programming
 
-RStudio + RMarkdown = Literate programming in R
+## Recap
 
+<br><br>
 
-# A reproducible framework
+<center>
+![literate_prog](img/literate_prog.png)
+</center>
 
-## Four facets of reproducibility
-
-* **Documentation:** difference between binary (e.g. docx) and plain text files, and why text files are preferred for documentation + using markdown to document your workflow so that anyone can pick up your data and follow what you are doing
-
-* **Organization:** tools for organizing your projects so that you don't have a single folder with hundreds of files
-
-* **Automation:** the power of scripting in the R programming language and integrating it into RMarkdown to create automated data analyses
-
-* **Dissemination:** publishing is not the end of your analysis, rather it is a way station towards your future research and the future research of others
 
 # Revisit Exercise 1: Doing better
 
-## Getting started
+## Accessing RStudio
 
-**Option 1: I'm new to R/RStudio:**
+* **Option 1: I'm new to R/RStudio:** 
 
-* Use the URL and login information provided on the paper slip to log in to RStudio Server
-* Upload repro-ex.zip by clicking on *Upload* in the *Files* pane (RStudio will automatically unzip the folder)
-* Click on the folder *repro-ex* and open the file *ex1-template.Rmd*
+Use the URL and login info on the paper slip to log on to RStudio Server
 
-**Option 2: I already use R/RStudio:** Do you have the **latest** versions of R and RStudio installed locally on your computer?
+* **Option 2: I already use R/RStudio:** Do you have the **latest** versions of R and RStudio installed locally on your computer?
+    * No, or you're not sure $\rightarrow$ Go to Option 1
+    * Yes $\rightarrow$ Install and load `knitr`, `ggplot2`, and `downloader` packages
 
-* If no, go to Option 1
-* If yes, open *ex1-template.Rmd* in RStudio
-* Also make sure you have the `knitr` and `ggplot2` packages installed and loaded
+## Template
+
+Download `ex1-template.Rmd` using the following
+```{r eval = FALSE}
+download(url = "http://bit.ly/reproduce_uscots15_ex1", destfile = "ex1-template.Rmd")
+```
+locate it in your Files pane, and compile it by clicking on `Knit HTML`
+
 
 ## Demo
 
@@ -233,32 +273,25 @@ RStudio + RMarkdown = Literate programming in R
 
 ## A brief extension
 
-```{r echo=FALSE}
-gap_5060 = read.csv("data/gapminder-5060.csv")
-library(ggplot2)
-```
-
 **Task:** Add year 1967 in another color.
 
-* Create a subset of `gap_5060` for Europe in 1952 and 1967:
-```{r eval=FALSE}
-years = c(1952, 1967)
-eu_5267 = subset(gap_5060, continent == "Europe" & (year %in% years))
+1. Create a subset of `gap_5060` for Europe in 1952 **and 1967** and call it `eu_5267`.
+
+```{r eval=FALSE, echo=FALSE}
+eu_5267 <- gap_5060 %>%
+  filter(continent == "Europe", year %in% c(1952, 1967))
 ```
 
-* Create the plot:
-```{r eval=FALSE}
-ggplot(data = eu_5267, aes(x = gdpPercap, y = lifeExp, colour = as.factor(year))) +
-  geom_point()
+2. Create the plot.
+
+```{r eval=FALSE, echo=FALSE}
+ggplot(data = eu_5267, aes(x = gdpPercap, y = lifeExp, color = factor(year))) +
+  geom_point()  
 ```
+
 
 
 # Exercise 2: Extending your analysis
-
-## Resources
-
-* Open `ex2-template.Rmd`
-
 
 ## Instructions
 
@@ -267,9 +300,15 @@ It's your lucky day, you just got some additional data!
 **Tasks:**
 
 1. Append the new data `gapminder-7080.csv` and `gapminder-90plus.csv` to your existing data set. (Be careful as you do so, as the ordering of columns in the data set may not match between the different CSV files!)
-
 2. Create line plots of life expectancy over time for Canada, Mexico, and the United States that run from 1952 to 2007.
 
+**Template:**
+
+Download `ex2-template.Rmd` using the following
+```{r eval = FALSE}
+download(url = "http://bit.ly/reproduce_uscots15_ex2", destfile = "ex2-template.Rmd")
+```
+locate it in your Files pane, and compile it by clicking on `Knit HTML`
 
 ## Demo
 
@@ -284,36 +323,108 @@ It's your lucky day, you just got some additional data!
 ## Take aways
 
 * The analysis is self-documenting
-
 * It's easy to extend or refine analyses by copying and modifying code blocks
-
 * The analysis can be disseminated by providing the RMarkdown file and data sources
-
 * The results can also be shared as HTML (fully self contained), PDF, or Word (gasp!) if just a summary of the analysis is needed
 
-# Reproducibility in the classroom
-
-* in the intro class single markdown file
-    * Lab example
-    * success story from duke
-    * to be successful:
-        * well written labs
-        * organized templates
-    * added benefit: code output in one place makes learning easier
-* in higher level classes can get into tools like GitHub etc., RStudio integration makes it easy
 
 
-# Next steps
+# Next steps... for you
 
-## Version control and git
+## PSA
 
-* version control
-* GitHub - everything is plain text
-* integrates well with RStudio
-* show GitHub page for workshop materials
+<br><br><br>
 
-## Additional resources
+<center>
+*"File organization and naming,*
+<br>
+*are powerful weapons against chaos."*
+<br><br>
+Jenny Bryan
+<center>
 
+
+## Organization - quick tips
+
+* Folder hierarchy:
+    * Main folder for project
+    * All raw data in `data/` folder (take away your own permissions so you can't accidentally manipulate these folders)
+    * All code (scripts or markdown files) in `code` folder
+    * All figures in `figures/` folder
+    * etc.
+
+* File naming:
+    * No spaces
+    * Indication of order (`01_loaddata.R`, `02_eda.R`, etc.)
+    * Indication of version (date)
+
+
+## Why should I use version control?
+
+<center>
+![version_control](img/version_control.png)
+</center>
+Source: http://stackoverflow.com/questions/1408450/why-should-i-use-version-control
+
+
+## Version control - quick tips
+
+* Git: Free and open source distributed version control system 
+* GitHub: Web-based Git repository hosting service offering all of the distributed revision control and source code management functionality of Git and more
+    * RStudio integration: https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN
+    * Great for collaboration and dissemination
+* All source code for this workshop's materials can be found at http://bit.ly/reproduce_uscots15_git
+
+
+
+# Next steps... for your teaching
+
+## Reproducibility in the intro stat course
+
+* Keys to success:
+    * Well written labs
+    * Organized and consistent templates
+    * Scaffolding!
+    
+* Goal:
+    * Day 1: Single markdown template, lots of handholding
+    * End of semester: Students find their own dataset, and collaboratively analyze and report
+
+* Added benefit: Seeing code and output tightly connected makes learning R easier
+
+
+## Lab example
+
+<center>
+https://stat.duke.edu/courses/Summer15/sta104.01-1/post/labs/lab0.html
+<br>
+
+![lab_example](img/lab_example.png)
+
+<br><br>
+Want more labs? https://www.openintro.org/stat/labs.php
+</center>
+
+
+## Reproducibility in higher level courses
+
+* As the data and analysis get more complex, so does the need for ensuring reproducibility
+
+* Thankfully, so does that computational comfort level of students
+
+* Options:
+    * Introduce Git/GitHub as a tool
+    * Run the whole course on GitHub by using it as your course management system, e.g. [Sta 545 at UBC](http://stat545-ubc.github.io/) or [Sta 523 at Duke](https://stat.duke.edu/~cr173/Sta523_Fa14/)
+    * Other ideas?
+
+
+# Thank you!
+
+Contact me @minebocek or mine@stat.duke.edu
+
+Slides at http://bit.ly/reproduce_uscots15_slides
+
+Source code at http://bit.ly/reproduce_uscots15_git
 
 
 
