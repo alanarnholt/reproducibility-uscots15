@@ -250,14 +250,19 @@ We need an environment where
 ## Accessing RStudio
 
 * **Option 1: I'm new to R/RStudio:** 
-    * Go to http://bit.ly/reproduce_uscots15_rstudio
-    * Claim an account, and don't forget to change the Taken column to "yes"
-    * Log on to RStudio Server at the URL for the account you claimed, using "guest" as the username and the password for that account
+    * Go to [URL given in your handout]
+    * Username: guest
+    * Password: [password given in your handout]
+    * This account will work until the end of today
 
 * **Option 2: I already use R/RStudio:** Do you have the **latest** versions of R and RStudio installed locally on your computer?
     * No, or you're not sure $\rightarrow$ Go to Option 1
     * Yes $\rightarrow$ Install and load `knitr`, `ggplot2`, and `downloader` packages
-
+```{r eval = FALSE}
+install.packages("knitr") ; library("knitr")
+install.packages("ggplot2") ; library("ggplot2")
+install.packages("downloader") ; library("downloader")
+```   
 ## Template
 
 Download `ex1-template.Rmd` using the following
