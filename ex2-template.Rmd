@@ -79,3 +79,4 @@ Insert the code for creating the same plot as before, but now also including dat
 
 Remember that your code must go into a code chunk. You can insert a code chunk by typing the required characters or clicking on *Chunks* and then *Insert Chunk* above.
 
+[YOUR ANSWER HERE]
