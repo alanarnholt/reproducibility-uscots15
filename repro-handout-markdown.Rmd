@@ -1,0 +1,64 @@
+---
+title: "Connecting data, analysis, and results using a reproducible framework"
+author: "Mine Çetinkaya-Rundel & Nicholas Horton"
+date: "USCOTS 2015"
+output:
+  pdf_document: default
+  html_document:
+    highlight: pygments
+---
+
+```{r echo=FALSE}
+library(knitr)
+library(markdown)
+library(rmarkdown)
+```
+
+```{r echo=FALSE}
+rstudio_login <- read.csv("rstudio_login/rstudio_login.csv", stringsAsFactors = FALSE)
+url <- rstudio_login[i,1]
+pass <- rstudio_login[i,2]
+```
+
+#### Materials:
+
+* Slides at http://bit.ly/reproduce_uscots15_slides
+
+* For GitHub users: all source code at http://bit.ly/reproduce_uscots15_git
+
+#### Agenda for hands-on portions of the workshop:
+
+* Exercise 1: Dataset at http://bit.ly/reproduce_uscots15_gap5060
+
+* Revisit Exercise 1: requires RStudio. 
+    * You have two options for accessing RStudio:
+        * **Option 1: I'm new to R/RStudio:** 
+            * Go to `r url`
+            * Username: guest
+            * Password: `r pass`
+            * This account will work until the end of today
+
+        * **Option 2: I already use R/RStudio:** Do you have the **latest** versions of R and RStudio installed locally on your computer?
+            * No, or you're not sure $\rightarrow$ Go to Option 1
+            * Yes $\rightarrow$ Install and load `knitr`, `ggplot2`, and `downloader` packages
+```{r eval = FALSE}
+install.packages("knitr") ; library("knitr")
+install.packages("ggplot2") ; library("ggplot2")
+install.packages("downloader") ; library("downloader")
+```   
+    * Download RMarkdown template using
+
+```{r eval = FALSE}
+download(url = "http://bit.ly/reproduce_uscots15_ex1", destfile = "ex1-template.Rmd")
+```    
+    
+
+* Exercise 2: Download RMarkdown template using
+
+```{r eval = FALSE}
+download(url = "http://bit.ly/reproduce_uscots15_ex2", destfile = "ex2-template.Rmd")
+```
+
+#### Questions / Connections:
+
+Feel free to contact Mine at mine@stat.duke.edu after the workshop with any questions.
